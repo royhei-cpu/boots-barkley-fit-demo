@@ -29,7 +29,7 @@ jobs:
       - name: Download and verify the complete demo source
         env:
           SITE_ZIP_URL: https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-demo-source.zip
-          SITE_ZIP_SHA256: 0ae526ce2cb228aa5c97bbb072d58a9af3757efc8e4df96993c3ac2c5e60af58
+          SITE_ZIP_SHA256: b1a58b8d1f5b6d42d55aee3dfaef7e036fa7d78c8a48746a5e0370d698c645d2
         run: |
           set -euo pipefail
           curl --fail --location --retry 3 \
