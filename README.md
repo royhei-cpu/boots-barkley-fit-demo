@@ -10,7 +10,7 @@ The complete app source, 30 sample costume previews, Target product images, samp
 
 Choose Bullseye, the Border Collie, or the Corgi. See the same sample dog before and after wearing each recommended costume, then compare its measurements with the suggested size. The catalog includes 35 Target styles, with missing or conflicting sizing data clearly marked.
 
-Costume previews are generated illustrations, not a physical fit guarantee. Sample measurements are simulated; manually entered measurements update the size comparison. Uploaded photos and videos are previewed locally. Generating a costume image from an uploaded pet is not enabled yet.
+Costume previews are generated illustrations, not a physical fit guarantee. Sample measurements are simulated. Upload a photo or video to create your own pet profile; photos advance automatically, and selecting a real video frame continues immediately. Enter chest, neck and back dimensions, and confirm them with a tape to receive Target size comparisons. Your file and profile stay on your device and clear on refresh. Automatic photo/video measurement and costume rendering for uploaded pets are not implemented. The tutorial demonstrates sample profiles.
 
 ## Run locally
 
