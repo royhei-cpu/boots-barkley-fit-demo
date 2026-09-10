@@ -1,0 +1,366 @@
+{
+  "checkedDate": "2026-09-10",
+  "collection": "https://www.target.com/c/pet-halloween-costumes-holiday-shop/boots-barkley/-/N-5tf58Zvyzcr",
+  "products": [
+    {
+      "id": "shopping-cart",
+      "name": "Target Shopping Cart Full Body Halloween Dog and Cat Costume",
+      "productUrl": "https://www.target.com/p/halloween-target-shopping-cart-dog-and-cat-full-body-costume-hyde-eek-boutique/-/A-92162659",
+      "category": "full-body",
+      "brand": "Boots & Barkley",
+      "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_2676a14a-c852-461e-88ad-4a65e44ab61d?wid=1200&hei=1200&qlt=90&fmt=jpeg",
+      "path": "/tmp/bb-catalog-assets/shopping-cart.jpg",
+      "bytes": 101798,
+      "source": "Target product page og:image",
+      "verifiedItemSizeChart": false,
+      "familySpecies": [
+        "dog",
+        "cat"
+      ],
+      "speciesEvidence": "Family description explicitly says cats and dogs; default variant specification says Dog. Verify selected size before presenting species-specific fit."
+    },
+    {
+      "id": "chicken",
+      "name": "Chicken Full Body Halloween Dog and Cat Costume",
+      "productUrl": "https://www.target.com/p/halloween-full-body-white-chicken-dog-and-cat-costume-hyde-eek-boutique/-/A-88181269",
+      "category": "full-body-with-headpiece",
+      "brand": "Boots & Barkley",
+      "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_7a52503f-2879-4be8-9c1f-e3438ba1e78e?wid=1200&hei=1200&qlt=90&fmt=jpeg",
+      "path": "/tmp/bb-catalog-assets/chicken.jpg",
+      "bytes": 93416,
+      "source": "Target product page og:image",
+      "verifiedItemSizeChart": false,
+      "familySpecies": [
+        "dog",
+        "cat"
+      ],
+      "speciesEvidence": "Title and default variant Intended Pet Type explicitly list Dog and Cat."
+    },
+    {
+      "id": "hot-dog",
+      "name": "Hot Dog Full Body Halloween Dog and Cat Costume with Ketchup Toy",
+      "productUrl": "https://www.target.com/p/-/A-90479750",
+      "category": "full-body",
+      "brand": "Boots & Barkley",
+      "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_34443206-7729-48a3-ac01-c5082be2eddb?wid=1200&hei=1200&qlt=90&fmt=jpeg",
+      "path": "/tmp/bb-catalog-assets/hot-dog.jpg",
+      "bytes": 141145,
+      "source": "Target product page og:image",
+      "verifiedItemSizeChart": false,
+      "familySpecies": [
+        "dog",
+        "cat"
+      ],
+      "speciesEvidence": "Title and default variant Intended Pet Type explicitly list Dog and Cat."
+    },
+    {
+      "id": "pumpkin",
+      "name": "Jack-O\u2019-Lantern Pumpkin Reflective Halloween Hoodie Dog and Cat Costume",
+      "productUrl": "https://www.target.com/p/reflective-halloween-jack-o-lantern-pumpkin-hoodie-dog-and-cat-costume-hyde-eek-boutique/-/A-85561080",
+      "category": "hoodie",
+      "brand": "Boots & Barkley",
+      "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_bc8edaa3-bfda-4663-a9ec-13d0865b59f1?wid=1200&hei=1200&qlt=90&fmt=jpeg",
+      "path": "/tmp/bb-catalog-assets/pumpkin.jpg",
+      "bytes": 139775,
+      "source": "Target product page og:image",
+      "verifiedItemSizeChart": false,
+      "familySpecies": [
+        "dog",
+        "cat"
+      ],
+      "speciesEvidence": "Title and default variant Intended Pet Type explicitly list Dog and Cat.",
+      "speciesNote": "Description specifically says cats and small dogs."
+    },
+    {
+      "id": "bat-wings",
+      "name": "Bat Wings Rider Reflective Halloween Dog and Cat Costume",
+      "productUrl": "https://www.target.com/p/reflective-halloween-bat-wings-rider-dog-and-cat-costume-hyde-eek-boutique/-/A-85427120",
+      "category": "rider",
+      "brand": "Boots & Barkley",
+      "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_064162ee-e26f-4f54-8dcd-0836f2e75380?wid=1200&hei=1200&qlt=90&fmt=jpeg",
+      "path": "/tmp/bb-catalog-assets/bat-wings.jpg",
+      "bytes": 107542,
+      "source": "Target product page og:image",
+      "verifiedItemSizeChart": false,
+      "familySpecies": [
+        "dog",
+        "cat"
+      ],
+      "speciesEvidence": "Family description explicitly says cats and dogs; default variant specification says Dog. Verify selected size before presenting species-specific fit."
+    },
+    {
+      "id": "lion",
+      "name": "Lion Halloween Dog and Cat Headwear",
+      "productUrl": "https://www.target.com/p/halloween-lion-dog-and-cat-headwear-hyde-eek-boutique/-/A-88181318",
+      "category": "headwear",
+      "brand": "Boots & Barkley",
+      "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_da7bd3d5-d186-4829-8b6a-bca45f00ddfe?wid=1200&hei=1200&qlt=90&fmt=jpeg",
+      "path": "/tmp/bb-catalog-assets/lion.jpg",
+      "bytes": 236905,
+      "source": "Target product page og:image",
+      "verifiedItemSizeChart": false,
+      "familySpecies": [
+        "dog",
+        "cat"
+      ],
+      "speciesEvidence": "Title and default variant Intended Pet Type explicitly list Dog and Cat."
+    },
+    {
+      "id": "cat-glitter-wings",
+      "name": "Glitter Wings Halloween Cat Costume Black",
+      "brand": "Boots & Barkley",
+      "productUrl": "https://www.target.com/p/halloween-black-glitter-wings-cat-costume-hyde-38-eek-boutique-8482/-/A-84989779",
+      "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_079594cf-38c5-4ae1-8bd7-6aa971fae414?wid=1200&hei=1200&qlt=90&fmt=jpeg",
+      "path": "/tmp/bb-catalog-assets/cat-glitter-wings.jpg",
+      "source": "Target product page og:image",
+      "familySpecies": [
+        "cat"
+      ],
+      "speciesEvidence": "Target title, description and Intended Pet Type all explicitly identify Cat.",
+      "verifiedItemSizeChart": false,
+      "category": "rider",
+      "publishedSpecifications": {
+        "weightLb": [
+          1,
+          20
+        ],
+        "neckIn": [
+          8,
+          16
+        ],
+        "chestIn": [
+          11,
+          23
+        ],
+        "overallLengthIn": 9.75,
+        "closure": "Elastic Band"
+      },
+      "sizeNote": "Item has no selectable letter size. Do not assign a general apparel letter size to this accessory."
+    },
+    {
+      "id": "highland-cow",
+      "name": "Highland Cow Halloween Dog and Cat Costume",
+      "productUrl": "https://www.target.com/p/-/A-94237128",
+      "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_905a312f-8f25-4363-a340-63776ace0fcc",
+      "source": "Target product page",
+      "verifiedItemSizeChart": false
+    }
+  ],
+  "chart": {
+    "source": "https://digitalcontent.target.com/itemcontent/sizecharts/htmlfragments/pets-boots-clothing/boots-barkley/clothing.html",
+    "headers": [
+      "size",
+      "weightLbLabel",
+      "neck",
+      "chestGirth",
+      "garmentLength",
+      "head"
+    ],
+    "individual": [
+      [
+        "XS",
+        "up to 10",
+        [
+          8,
+          11
+        ],
+        [
+          11,
+          16
+        ],
+        10,
+        [
+          8,
+          12
+        ]
+      ],
+      [
+        "S",
+        "up to 20",
+        [
+          10,
+          16
+        ],
+        [
+          16,
+          23
+        ],
+        14,
+        [
+          12,
+          16
+        ]
+      ],
+      [
+        "M",
+        "up to 40",
+        [
+          14,
+          20
+        ],
+        [
+          20,
+          28
+        ],
+        18,
+        [
+          16,
+          20
+        ]
+      ],
+      [
+        "L",
+        "up to 80",
+        [
+          18,
+          24
+        ],
+        [
+          26,
+          35
+        ],
+        22,
+        [
+          20,
+          24
+        ]
+      ],
+      [
+        "XL",
+        "up to 100",
+        [
+          22,
+          28
+        ],
+        [
+          32,
+          40
+        ],
+        24,
+        [
+          24,
+          28
+        ]
+      ],
+      [
+        "XXL",
+        "100+",
+        [
+          26,
+          34
+        ],
+        [
+          38,
+          45
+        ],
+        26,
+        [
+          26,
+          30
+        ]
+      ]
+    ],
+    "grouped": [
+      [
+        "XXS/XS",
+        "up to 10",
+        [
+          10,
+          14
+        ],
+        [
+          11,
+          20
+        ],
+        11,
+        [
+          8,
+          12
+        ]
+      ],
+      [
+        "S/M",
+        "up to 50",
+        [
+          10,
+          20
+        ],
+        [
+          16,
+          28
+        ],
+        16.5,
+        [
+          12,
+          20
+        ]
+      ],
+      [
+        "L/XL",
+        "up to 100",
+        [
+          18,
+          28
+        ],
+        [
+          26,
+          40
+        ],
+        22.5,
+        [
+          20,
+          28
+        ]
+      ]
+    ],
+    "unitNote": "Dimensions treated as inches, consistent with Target item specifications; standalone chart fragment does not explicitly print an inches label. Weight is printed in lbs except L row omits lbs.",
+    "notes": [
+      "Directional general apparel/costume guide, varies by material and construction.",
+      "Garment length is a garment measurement, not a supplied acceptable dog back-length interval.",
+      "Headwear requires head sizing; do not infer from chest or neck alone.",
+      "Target advises sizing up between sizes.",
+      "Length: collar base of neck to base of tail. Girth: widest chest behind front legs with room. Neck: collar position with two-finger slack."
+    ],
+    "shoppingCartConflict": {
+      "source": "https://www.target.com/p/-/A-90920341",
+      "specifications": {
+        "size": "L",
+        "weightLb": [
+          41,
+          80
+        ],
+        "neckIn": [
+          18,
+          24
+        ],
+        "chestIn": [
+          26,
+          35
+        ],
+        "lengthIn": 22
+      },
+      "embeddedChart": {
+        "size": "L",
+        "weightLb": "up to 80",
+        "neckIn": [
+          15,
+          20
+        ],
+        "chestIn": [
+          27,
+          34
+        ],
+        "garmentLengthIn": 19
+      },
+      "decision": "Do not present exact item fit or a confirmed purchase size. General size suggestion requires verification against selected item."
+    }
+  },
+  "imageProvenance": "Official Target product photography downloaded from page og:image URL; no reuse license verified. Preserve product attribution and links; do not imply Target endorsement.",
+  "camera": {
+    "getUserMedia": "https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia",
+    "mediaRecorder": "https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder",
+    "captureSpec": "https://www.w3.org/TR/mediacapture-streams/",
+    "depthSpec": "https://www.w3.org/TR/webxr-depth-sensing-1/",
+    "conclusion": "Browser camera preview and recording are supported. Ordinary video stream does not supply calibrated physical dimensions; a supported depth session or known scale plus a validated measurement algorithm is additional work. WebXR depth needs native support; no promise that it exists on a user phone."
+  }
+}

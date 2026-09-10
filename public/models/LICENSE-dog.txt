@@ -1,0 +1,15 @@
+Shiba Inu sample 3D model
+Author: Quaternius
+License: CC0 1.0 Universal (Public Domain Dedication)
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Source: https://poly.pizza/m/y4wdQpg767
+Collection: https://poly.pizza/bundle/Animated-Animal-Pack-ILAPXeUYiS
+Download URL: https://static.poly.pizza/ba6d0ee3-bcc0-4ef0-9d3c-a3e245b41c77.glb
+Local file: /tmp/bb-sample-shiba.glb
+File size: 851196 bytes
+
+CC0 does not require attribution. Optional credit: Sample Shiba Inu 3D model by Quaternius (CC0), via Poly Pizza.
+
+GLB 2.0, no required extensions, no external images. Exact idle animation name: Idle (alternatively AnimalArmature|Idle). First animation is Attack, so do not autoplay default animation.
+
+Suggested disclosure: Sample model, not your pet. Not used for measurements.

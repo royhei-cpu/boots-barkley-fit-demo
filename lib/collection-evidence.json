@@ -1,0 +1,44 @@
+{
+  "checkedDate": "2026-09-10",
+  "verifiedStylesWithInitialSeven": 35,
+  "bootsBarkley": 31,
+  "hydeEek": 4,
+  "newRows": 28,
+  "newUniqueExcludingExistingHighlandCow": 27,
+  "completeness": "All 35 verified public product families collected from Target current category listings and directly fetched product pages; full universal public/inventory completeness is not guaranteed.",
+  "listingEvidence": [
+    {
+      "url": "https://www.target.com/c/pet-halloween-costumes-holiday-shop/boots-barkley/-/N-5tf58Zvyzcr",
+      "source": "Web tool current page",
+      "count": 32,
+      "note": "23 product-family cards extracted; first-page count can vary by crawl and locale."
+    },
+    {
+      "url": "https://www.target.com/c/pet-halloween-costumes-holiday-shop/boots-barkley/-/N-5tf58Zvyzcr?Nao=24",
+      "source": "Live Chrome DOM, 2026-09-10",
+      "count": 31,
+      "page2Titles": [
+        "Cupcake",
+        "Gnome",
+        "Boyscout",
+        "Raven Wings",
+        "Parrot Wings",
+        "Thanksgiving Turkey",
+        "Highland Cow"
+      ],
+      "note": "After page populated, human verification overlay appeared. No challenge interacted with. Earlier search cache was stale (38 results, ten months old) and was not used as completeness evidence."
+    },
+    {
+      "url": "https://www.target.com/c/pet-halloween-costumes-holiday-shop/hyde-and-eek-boutique/-/N-5tf58Zq643leo4u2a",
+      "source": "Web tool current page",
+      "count": 4,
+      "titles": [
+        "Reversible Red Devil or Angel Wings",
+        "Bee Cat",
+        "Monster Hoodie",
+        "Spiderweb Sweater"
+      ]
+    }
+  ],
+  "scopeNote": "Target categorizes Thanksgiving Turkey in its Pet Halloween Costumes collection, so it is included. Letter-size variants are deduplicated by product-family A-ID. This is a product discovery catalog; availability and sizing are not promised."
+}

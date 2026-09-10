@@ -1,0 +1,4 @@
+@import './app/fonts.css';
+@import './app/globals.css';
+@source not './docs';
+@source not './node_modules';

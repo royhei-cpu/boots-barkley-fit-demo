@@ -1,0 +1,22 @@
+Sample 3D dog and cat models
+Author: Quaternius
+Collection: Cube World Kit
+License: Creative Commons CC0 1.0 Universal Public Domain Dedication
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Author collection and license source: https://quaternius.com/packs/cubeworldkit.html
+
+Dog source: https://poly.pizza/m/2kUk0QqpCg
+Dog download: https://static.poly.pizza/de55d76a-f578-4979-97ff-2a62edac32f3.glb
+Local file: /tmp/bb-sample-dog.glb
+Size: 296880 bytes
+
+Cat source: https://poly.pizza/m/qKICY6xla2
+Cat download: https://static.poly.pizza/67f5e3fe-37ee-4c86-95c8-d269d8c9f8ba.glb
+Local file: /tmp/bb-sample-cat.glb
+Size: 238672 bytes
+
+CC0 does not require attribution. Optional credit: Sample 3D models by Quaternius (CC0), via Poly Pizza.
+
+Product disclosure: Sample model, not your pet. Not used for measurements.
+
+Both files have embedded PNG textures and no required glTF extensions. Both are rigged, animated GLB 2.0 assets. First animation is Death; use exact animation name AnimalArmature|AnimalArmature|AnimalArmature|Idle if playing a standing idle animation, or leave animation unplayed.

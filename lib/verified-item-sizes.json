@@ -1,0 +1,240 @@
+[
+  {
+    "id": "1011934287",
+    "checkedDate": "2026-09-10",
+    "note": "S, M and L use this costume\u2019s published item neck and chest specifications. The listed overall length differs from the shared chart\u2019s garment length; review coverage in person. Other variants have not been verified.",
+    "sizes": [
+      {
+        "size": "S",
+        "neck": [
+          11,
+          15
+        ],
+        "chest": [
+          13,
+          19
+        ],
+        "length": 12.48,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95002330"
+      },
+      {
+        "size": "M",
+        "neck": [
+          13,
+          18
+        ],
+        "chest": [
+          19,
+          27
+        ],
+        "length": 14.04,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95002275"
+      },
+      {
+        "size": "L",
+        "neck": [
+          15,
+          20
+        ],
+        "chest": [
+          27,
+          34
+        ],
+        "length": 15.6,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95002263"
+      }
+    ]
+  },
+  {
+    "id": "1011934293",
+    "checkedDate": "2026-09-10",
+    "note": "S, M and L use this costume\u2019s published item neck and chest specifications. The listed overall length differs from the shared chart\u2019s garment length; review coverage and leg openings in person. Other variants have not been verified.",
+    "sizes": [
+      {
+        "size": "S",
+        "neck": [
+          11,
+          15
+        ],
+        "chest": [
+          13,
+          19
+        ],
+        "length": 23.4,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95002375"
+      },
+      {
+        "size": "M",
+        "neck": [
+          13,
+          18
+        ],
+        "chest": [
+          19,
+          27
+        ],
+        "length": 25.74,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95002349"
+      },
+      {
+        "size": "L",
+        "neck": [
+          15,
+          20
+        ],
+        "chest": [
+          27,
+          34
+        ],
+        "length": 28.47,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95002342"
+      }
+    ]
+  },
+  {
+    "id": "1011934245",
+    "checkedDate": "2026-09-10",
+    "note": "S, M and L use this costume\u2019s published item neck and chest specifications. The listed overall length differs from the shared chart\u2019s garment length; review coverage and movement in person. Other variants have not been verified.",
+    "sizes": [
+      {
+        "size": "S",
+        "neck": [
+          11,
+          15
+        ],
+        "chest": [
+          13,
+          19
+        ],
+        "length": 14.04,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95032069"
+      },
+      {
+        "size": "M",
+        "neck": [
+          13,
+          18
+        ],
+        "chest": [
+          19,
+          27
+        ],
+        "length": 15.6,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95032065"
+      },
+      {
+        "size": "L",
+        "neck": [
+          15,
+          20
+        ],
+        "chest": [
+          27,
+          34
+        ],
+        "length": 17.16,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95032057"
+      }
+    ]
+  },
+  {
+    "id": "1011934069",
+    "checkedDate": "2026-09-10",
+    "note": "XS, S, M and L use this costume\u2019s published neck and chest specifications. XS/S list dogs and cats; M/L list dogs only. Overall length differs from the shared chart\u2019s garment length; review coverage in person.",
+    "sizes": [
+      {
+        "size": "XS",
+        "neck": [
+          7,
+          12
+        ],
+        "chest": [
+          10,
+          13
+        ],
+        "length": 10,
+        "species": [
+          "dog",
+          "cat"
+        ],
+        "url": "https://www.target.com/p/-/A-95002346"
+      },
+      {
+        "size": "S",
+        "neck": [
+          11,
+          15
+        ],
+        "chest": [
+          13,
+          19
+        ],
+        "length": 11.5,
+        "species": [
+          "dog",
+          "cat"
+        ],
+        "url": "https://www.target.com/p/-/A-95002343"
+      },
+      {
+        "size": "M",
+        "neck": [
+          13,
+          18
+        ],
+        "chest": [
+          19,
+          27
+        ],
+        "length": 17,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95002341"
+      },
+      {
+        "size": "L",
+        "neck": [
+          15,
+          20
+        ],
+        "chest": [
+          27,
+          34
+        ],
+        "length": 20,
+        "species": [
+          "dog"
+        ],
+        "url": "https://www.target.com/p/-/A-95002390"
+      }
+    ]
+  }
+]

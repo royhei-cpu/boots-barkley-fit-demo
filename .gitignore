@@ -1,0 +1,7 @@
+node_modules/
+.vite-cache/
+.DS_Store
+docs/
+public/downloads/boots-barkley-fit-demo-source.zip
+.env
+.env.*

@@ -1,26 +1,26 @@
-# Boots & Barkley Fit Studio — concept demo
+# Boots & Barkley Fit Studio
 
-[Open the interactive demo](https://barkley-fit-studio.lhei111.chatgpt.site). The demo, video and complete source download are public—no sign-in required.
+## [Open the public website →](https://royhei-cpu.github.io/boots-barkley-fit-demo/)
 
-[Download full source ZIP](https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-demo-source.zip) · [Watch/download the video](https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-walkthrough.mp4)
+No GitHub or ChatGPT login is needed to view the demo.
 
-## Watch the process
+The complete app source, 30 sample costume previews, Target product images, sample models, and three-dog tutorial video are stored in this repository. GitHub Pages builds the website directly from these files.
 
-Download **boots-barkley-fit-walkthrough.mp4**. It demonstrates guided capture, the pet measurement profile, and size-by-size comparisons for actual Target Hot Dog, Highland Cow, Bat Wings and Chicken costumes. Bullseye, a larger Border Collie and a smaller Corgi illustrate different body shapes and sizes.
+[Watch the 1:53 video tutorial](https://royhei-cpu.github.io/boots-barkley-fit-demo/downloads/boots-barkley-fit-walkthrough.mp4) · [Download the complete source](https://royhei-cpu.github.io/boots-barkley-fit-demo/downloads/boots-barkley-fit-demo-source.zip)
 
-## Run the source
+Choose Bullseye, the Border Collie, or the Corgi. See the same sample dog before and after wearing each recommended costume, then compare its measurements with the suggested size. The catalog includes 35 Target styles, with missing or conflicting sizing data clearly marked.
 
-Download and unzip **boots-barkley-fit-demo-source.zip**. Open the extracted folder. With Node.js 22.13+ and pnpm 11 installed, run:
+Costume previews are generated illustrations, not a physical fit guarantee. Sample measurements are simulated; manually entered measurements update the size comparison. Uploaded photos and videos are previewed locally. Generating a costume image from an uploaded pet is not enabled yet.
+
+## Run locally
+
+Clone this repository, then use Node.js 22.13 or newer and pnpm:
 
 ```sh
-pnpm install
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open the local address printed in the terminal. For a production build, use `pnpm build`. Full setup, source references and limitations are inside the ZIP in `README.md` and `SOURCE-NOTES.md`. No API keys are required.
+`pnpm typecheck` checks the source. `pnpm build` creates the static site in `docs/`. The Pages workflow publishes changes on `main` and rebuilds the downloadable source archive from GitHub. No API key is required for this sample demo.
 
-## What this concept does
-
-Local photo/video preview and costume-size calculations work. Sample capture images and measurements are simulated; the app does not measure an arbitrary uploaded pet. Product images and links come from Target. Hot Dog and Highland Cow examples use published item specifications; Bat Wings and Chicken use a clearly marked general chart and need item-level confirmation.
-
-The catalog contains 35 public Target style families checked September 10, 2026, not live stock or checkout. Exact fit also needs supplier-approved specifications and comfort/movement checks. This independent concept is not an official Target service.
+This independent concept is not an official Target service. Product references and scope are documented in [SOURCE-NOTES.md](SOURCE-NOTES.md).
