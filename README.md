@@ -24,3 +24,5 @@ pnpm dev
 `pnpm typecheck` checks the source. `pnpm build` creates the static site in `docs/`. The Pages workflow publishes changes on `main` and rebuilds the downloadable source archive from GitHub. No API key is required for this sample demo.
 
 This independent concept is not an official Target service. Product references and scope are documented in [SOURCE-NOTES.md](SOURCE-NOTES.md).
+
+Use **Remove photo** or **Remove video** in your pet profile or measurement editor to clear the uploaded media, measurements and recommendations. A staged video can be removed without changing the current profile.
