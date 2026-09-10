@@ -64,3 +64,14 @@ Photos and videos stay on the visitor’s device as session-only object URLs. A 
 No image/video measurement engine, pet reconstruction, learned circumference inference, uploaded-pet costume rendering, or validated physical-fit guarantee is implemented. The feature is an assisted profile and size-comparison workflow. The original walkthrough demonstrates sample profiles, not automatic measurement of visitors’ uploads.
 
 Uploaded pet media can be removed from the profile, measurement editor or original-media viewer. Removal clears the own-pet profile, measurements, drafts and recommendations, closes media dialogs and releases the local blob URL. Uncommitted video selections can also be removed without changing an existing pet profile.
+
+
+## On-device automatic scan prototype — September 11, 2026
+
+Photo/video uploads now run real LRASPP pet segmentation and AP10K RTMPose landmark inference locally using ONNX Runtime Web1.22.0 WASM. Five video frames are sampled automatically. No media is sent to a measurement server. Users may remove their upload and all profile measurements; closing or refreshing the page clears session data.
+
+A complete printed ArUco137 reference has a 10cm outer black square. Suitable reference-backed side and front views enable experimental ellipse-based chest/neck estimates and a neck-to-tail-root span. These populate the measurement review form; corrections are optional. Scale, pose, silhouette and cross-frame consistency filters abstain when evidence is unsuitable. No numeric fallback is produced for ordinary uncalibrated photos or video. Reference coplanarity and physical accuracy are not established automatically. See lib/scan/MEASUREMENT-METHOD.md for geometric assumptions and tests. This is not a validated garment-fitting engine.
+
+Code/model provenance: Torchvision LRASPP MobileNetV3 pretrained segmentation (BSD3 code; upstream pretrained-weight dataset terms apply), OpenMMLab RTMPose-m AP10K (Apache2 project; original AP10K dataset CC-BY4.0, conflicting downstream dataset-guide language recorded), ONNX Runtime (MIT), js-aruco (MIT plus upstream notices). Attribution and exact source URLs are retained under public/scan-runtime/licenses/. Model weights are unchanged except the documented FP16 RTMPose conversion, split into two assets for static hosting. Integrity hashes are in scan-assets.json. The user's personal photo, video, frames and inference results are not part of the public project.
+
+Human scanning references reviewed: https://docs.bodygram.com/platform/endpoints and https://3dlook.ai/content-hub/3dlook-turns-two-photos-structured-body-data/ . Guided perpendicular captures, physical scale inputs, failure states and editable results inform this prototype; neither human SDK is integrated or claimed to support dogs. Pet3D (https://pet3d.ai/) advertises a related early-access service without public integration or measurement-validation documentation.

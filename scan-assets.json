@@ -1,0 +1,18 @@
+{
+  "public/models/pet-lraspp-512.onnx": {
+    "bytes": 12881631,
+    "sha256": "860c7102e56b977f60e8804bdd9773ed26c2ed287042042263ac623a90567075"
+  },
+  "public/models/rtmpose-ap10k-fp16.part1": {
+    "bytes": 14000000,
+    "sha256": "54efa8b15d5beb6286c155b5879ad26846a68b4f2846b69075ca547d8119a261"
+  },
+  "public/models/rtmpose-ap10k-fp16.part2": {
+    "bytes": 13252850,
+    "sha256": "676dc6e7d4ba92dcfcf5bbccfe1218335bb958b23b8c4f67e74ee60f26279c32"
+  },
+  "public/scan-runtime/ort-wasm-simd-threaded.wasm": {
+    "bytes": 11210254,
+    "sha256": "71aef04959c5c1b6de461b6538e2058e306610034a85aad2742d0c7fd4533fe4"
+  }
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140mm" height="140mm" viewBox="0 0 98 98" shape-rendering="crispEdges" role="img" aria-labelledby="title desc">
+  <title id="title">Pet measurement reference marker 137</title>
+  <desc id="desc">The outside black square is exactly 100 millimeters wide and tall when printed at actual size. The white quiet zone is 20 millimeters on every side. Verify both black-square edges with a ruler after printing.</desc>
+  <rect x="0" y="0" width="98" height="98" fill="#fff"/>
+  <rect x="14" y="14" width="70" height="70" fill="#000"/>
+  <rect x="24" y="24" width="10" height="10" fill="#fff"/>
+  <rect x="34" y="34" width="10" height="10" fill="#fff"/>
+  <rect x="64" y="34" width="10" height="10" fill="#fff"/>
+  <rect x="24" y="44" width="10" height="10" fill="#fff"/>
+  <rect x="34" y="54" width="10" height="10" fill="#fff"/>
+  <rect x="64" y="54" width="10" height="10" fill="#fff"/>
+  <rect x="24" y="64" width="10" height="10" fill="#fff"/>
+  <rect x="44" y="64" width="10" height="10" fill="#fff"/>
+  <rect x="54" y="64" width="10" height="10" fill="#fff"/>
+  <rect x="64" y="64" width="10" height="10" fill="#fff"/>
+</svg>

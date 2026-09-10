@@ -1,0 +1,17 @@
+# Experimental calibrated pet geometry
+
+`calibrated-measurement.ts` consumes actual segmentation masks, AP10K model landmarks and detected marker corners. It contains no breed dimensions, depth-model outputs, preset pet sizes, or invented measurement fallback.
+
+Scale comes only from one complete ArUco marker ID 137 with a known **10 cm outer black-square width**. Its image quadrilateral must be sufficiently large, nearly square and unskewed. This is a weak-perspective pixel scale, not a 3D camera calibration. The user must hold the marker parallel to the camera and in the pet's body plane in each view. The algorithm cannot verify that placement from one image. Incorrect printed size or depth placement creates proportional scale error.
+
+The side view must show an aligned head and torso, close projected shoulder positions and a visible tail-base anchor. The front view requires symmetric face, neck and shoulder landmarks. All required anchors must lie inside or within two pixels of the selected pet outline. Clipped masks, uncertain anchors, small pets, ambiguous angles and head turns are rejected. Detected landmarks remain model predictions and may be wrong even with high response values.
+
+The side torso span is the straight line from AP10K neck to tail root. **It is not proven to equal a garment's tape-measured back length.** The chest section is placed 10% of torso span behind the midpoint of the shoulder joints to reduce foreleg contamination. This is an unvalidated anatomical placement heuristic, not a recovered body landmark. Neck depth is sampled perpendicular to the nose-to-neck axis. Front chest and neck widths use corresponding detected shoulder and neck levels. Five nearby silhouette sections must be continuous and within 22% width variation. Only one-pixel raster holes are bridged. Thick fur, a collar, a gate, touching body parts or legs may still corrupt a silhouette.
+
+When both views pass, perpendicular widths/depths are treated as the full diameters of ellipses and Ramanujan's formula estimates circumference. **The elliptical body assumption is unvalidated for these pets.** The function rejects inconsistent diameter proportions and disagreements exceeding 15% across usable frames, then supplies chest, neck and back in inches. Head size remains zero/unavailable. Numerical output is rounded to one decimal for editing, not to imply that accuracy.
+
+`quality` is a conservative heuristic combining model responses, marker geometry and cross-section stability. It is not a calibrated probability, confidence interval, or accuracy claim. Thresholds are capture/consistency filters and have not been validated against a dog dataset.
+
+Fifteen tests cover a known-scale ideal synthetic shape plus failures for missing, wrong, small, tilted and crossed references; clipping; gate-sized outline breaks; weak and outside-mask landmarks; head turns and oblique posture; missing perpendicular views; invalid inputs; inconsistent scales; and disagreement across video frames. Synthetic tests verify numerical behavior and abstention, **not actual pet measurement accuracy**. Physical validation requires independent tape measurements, multiple pets, held-out views and garment fit checks.
+
+The photo and video currently provided have no 10 cm reference marker. They cannot produce metric results from this engine. The gate video also has clipping/occlusion and species/outline ambiguity. No public sample should present these inputs as a successful physical sizing scan.
