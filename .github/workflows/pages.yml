@@ -1,0 +1,68 @@
+name: Deploy Fit Studio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v6.0.0
+
+      - name: Download and verify the complete demo source
+        env:
+          SITE_ZIP_URL: https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-demo-source.zip
+          SITE_ZIP_SHA256: 0ae526ce2cb228aa5c97bbb072d58a9af3757efc8e4df96993c3ac2c5e60af58
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 \
+            --user-agent Codex-public-access-check \
+            --proto '=https' --tlsv1.2 \
+            "$SITE_ZIP_URL" -o "$RUNNER_TEMP/site.zip"
+          printf '%s  %s\n' "$SITE_ZIP_SHA256" "$RUNNER_TEMP/site.zip" \
+            | sha256sum --check --strict
+          mkdir -p _source
+          unzip -q "$RUNNER_TEMP/site.zip" -d _source
+          test -s _source/package.json
+          cp "$RUNNER_TEMP/site.zip" _source/public/downloads/boots-barkley-fit-demo-source.zip
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Build the matching website
+        working-directory: _source
+        run: |
+          npm install --global pnpm@11.19.0
+          pnpm install --frozen-lockfile
+          pnpm typecheck
+          pnpm build
+          test -s docs/index.html
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: _source/docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1
