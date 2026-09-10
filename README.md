@@ -1,6 +1,6 @@
 # Boots & Barkley Fit Studio — concept demo
 
-[Open the private interactive demo](https://barkley-fit-studio.lhei111.chatgpt.site). Sign in with the same owning ChatGPT account on your work laptop.
+[Open the interactive demo](https://barkley-fit-studio.lhei111.chatgpt.site). The demo, video and complete source download are public—no sign-in required.
 
 [Download full source ZIP](https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-demo-source.zip) · [Watch/download the video](https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-walkthrough.mp4)
 
@@ -23,4 +23,4 @@ Open the local address printed in the terminal. For a production build, use `pnp
 
 Local photo/video preview and costume-size calculations work. Sample capture images and measurements are simulated; the app does not measure an arbitrary uploaded pet. Product images and links come from Target. Hot Dog and Highland Cow examples use published item specifications; Bat Wings and Chicken use a clearly marked general chart and need item-level confirmation.
 
-The catalog contains 35 public Target style families checked September 10, 2026, not live stock or checkout. Exact fit also needs supplier-approved specifications and comfort/movement checks. This independent private concept is not an official Target service.
+The catalog contains 35 public Target style families checked September 10, 2026, not live stock or checkout. Exact fit also needs supplier-approved specifications and comfort/movement checks. This independent concept is not an official Target service.
