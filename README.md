@@ -2,6 +2,8 @@
 
 [Open the private interactive demo](https://barkley-fit-studio.lhei111.chatgpt.site). Sign in with the same owning ChatGPT account on your work laptop.
 
+[Download full source ZIP](https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-demo-source.zip) · [Watch/download the video](https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-walkthrough.mp4)
+
 ## Watch the process
 
 Download **boots-barkley-fit-walkthrough.mp4**. It demonstrates guided capture, the pet measurement profile, and size-by-size comparisons for actual Target Hot Dog, Highland Cow, Bat Wings and Chicken costumes. Bullseye, a larger Border Collie and a smaller Corgi illustrate different body shapes and sizes.
