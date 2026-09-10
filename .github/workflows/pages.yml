@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -25,65 +25,6 @@ jobs:
         uses: actions/checkout@v7.0.1
         with:
           ref: main
-
-      - name: Import the audited website into GitHub once
-        env:
-          SOURCE_ZIP_URL: https://royhei-cpu.github.io/boots-barkley-fit-demo/downloads/boots-barkley-fit-demo-source.zip
-          SOURCE_ZIP_SHA256: b1a58b8d1f5b6d42d55aee3dfaef7e036fa7d78c8a48746a5e0370d698c645d2
-        run: |
-          set -euo pipefail
-          if test -s package.json; then
-            echo 'Complete website source already exists in this repository.'
-            exit 0
-          fi
-          curl --fail --location --retry 3 --proto '=https' --tlsv1.2 \
-            --user-agent Codex-public-access-check \
-            "$SOURCE_ZIP_URL" -o "$RUNNER_TEMP/fit-studio-source.zip"
-          printf '%s  %s\n' "$SOURCE_ZIP_SHA256" "$RUNNER_TEMP/fit-studio-source.zip" | sha256sum --check --strict
-          unzip -q "$RUNNER_TEMP/fit-studio-source.zip" -d "$RUNNER_TEMP/fit-studio-source"
-          test -s "$RUNNER_TEMP/fit-studio-source/package.json"
-          cp -a "$RUNNER_TEMP/fit-studio-source/." .
-          cat > README.md <<'README'
-          # Boots & Barkley Fit Studio
-
-          ## [Open the public website →](https://royhei-cpu.github.io/boots-barkley-fit-demo/)
-
-          No GitHub or ChatGPT login is needed to view the demo.
-
-          The complete app source, 30 sample costume previews, Target product images, sample models, and three-dog tutorial video are stored in this repository. GitHub Pages builds the website directly from these files.
-
-          [Watch the 1:53 video tutorial](https://royhei-cpu.github.io/boots-barkley-fit-demo/downloads/boots-barkley-fit-walkthrough.mp4) · [Download the complete source](https://royhei-cpu.github.io/boots-barkley-fit-demo/downloads/boots-barkley-fit-demo-source.zip)
-
-          Choose Bullseye, the Border Collie, or the Corgi. See the same sample dog before and after wearing each recommended costume, then compare its measurements with the suggested size. The catalog includes 35 Target styles, with missing or conflicting sizing data clearly marked.
-
-          Costume previews are generated illustrations, not a physical fit guarantee. Sample measurements are simulated; manually entered measurements update the size comparison. Uploaded photos and videos are previewed locally. Generating a costume image from an uploaded pet is not enabled yet.
-
-          ## Run locally
-
-          Clone this repository, then use Node.js 22.13 or newer and pnpm:
-
-          ```sh
-          pnpm install --frozen-lockfile
-          pnpm dev
-          ```
-
-          `pnpm typecheck` checks the source. `pnpm build` creates the static site in `docs/`. The Pages workflow publishes changes on `main` and rebuilds the downloadable source archive from GitHub. No API key is required for this sample demo.
-
-          This independent concept is not an official Target service. Product references and scope are documented in [SOURCE-NOTES.md](SOURCE-NOTES.md).
-          README
-          cat >> .gitignore <<'IGNORE'
-          docs/
-          public/downloads/boots-barkley-fit-demo-source.zip
-          .env
-          .env.*
-          IGNORE
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add --all -- . ':!.github'
-          if ! git diff --cached --quiet; then
-            git commit -m 'Add complete Fit Studio app, costume assets, and video'
-            git push origin HEAD:main
-          fi
 
       - name: Configure Pages
         uses: actions/configure-pages@v6.0.0
