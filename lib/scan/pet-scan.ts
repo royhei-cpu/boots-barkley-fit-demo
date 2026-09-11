@@ -1,6 +1,9 @@
 import * as ort from 'onnxruntime-web/wasm';
 import {createPetSegmenter,originalPetMask} from './pet-segmentation';
 import {inferAnimalPose,AP10K_LINKS} from './rtmpose-browser.mjs';
+import {inferPetAppearance,type AppearancePrediction} from './pet-classifier.mjs';
+import {estimatePetFrames,type ApproximateResult} from './approximate-estimator';
+import classifierLabels from './imagenet-labels.json';
 import {AR} from './vendor/aruco.js';
 import {largestPetComponent} from './pet-components';
 import {analyzeView,combineViews,type ScanFrame,type ViewAnalysis,type CombineResult} from './calibrated-measurement';
@@ -8,17 +11,17 @@ import {analyzeView,combineViews,type ScanFrame,type ViewAnalysis,type CombineRe
 export type ScannedFrame=ScanFrame & {
   previewUrl:string;overlayUrl:string;timeSeconds?:number;
   petPixels:number;dogPixels:number;catPixels:number;
-  componentCount:number;meaningfulComponents:number;warnings:string[];
+  componentCount:number;meaningfulComponents:number;warnings:string[];appearance?:AppearancePrediction;
 };
 export type ScanMediaResult={
-  frames:ScannedFrame[];viewResults:ViewAnalysis[];result:CombineResult;frameCount:number;
+  frames:ScannedFrame[];viewResults:ViewAnalysis[];result:CombineResult|ApproximateResult;frameCount:number;
 };
 export type ScanMediaOptions={
   url:string;kind:'image'|'video';asset:(path:string)=>string;
   onProgress:(text:string)=>void;signal?:AbortSignal;
 };
 type Segmenter=Awaited<ReturnType<typeof createPetSegmenter>>;
-type Models={segmenter:Segmenter;pose:ort.InferenceSession};
+type Models={segmenter:Segmenter;pose:ort.InferenceSession;classifier:ort.InferenceSession};
 const modelCache=new Map<string,Promise<Models>>();
 // A WebAssembly run itself cannot be interrupted. Queue scans, then discard an
 // aborted run's outputs at every await boundary before progress/results reach UI.
@@ -58,7 +61,8 @@ function loadModels(asset:ScanMediaOptions['asset']):Promise<Models> {
   const posePart1=asset('/models/rtmpose-ap10k-fp16.part1');
   const posePart2=asset('/models/rtmpose-ap10k-fp16.part2');
   const wasmBase=new URL(asset('/scan-runtime/'),document.baseURI).href;
-  const key=[segmentUrl,posePart1,posePart2,wasmBase].join('|');
+  const classifierUrl=asset('/models/mobilenetv3-large-v2-fp16.onnx');
+  const key=[segmentUrl,posePart1,posePart2,wasmBase,classifierUrl].join('|');
   let promise=modelCache.get(key);
   if(promise)return promise;
   ort.env.wasm.numThreads=1;
@@ -70,12 +74,14 @@ function loadModels(asset:ScanMediaOptions['asset']):Promise<Models> {
       bytes.set(parts[0]);bytes.set(parts[1],parts[0].length);
       return ort.InferenceSession.create(bytes,{executionProviders:['wasm'],graphOptimizationLevel:'all'});
     })();
-    const loaded=await Promise.allSettled([createPetSegmenter(segmentUrl,wasmBase),posePromise] as const);
-    const segmentation=loaded[0],pose=loaded[1];
-    if(segmentation.status==='fulfilled'&&pose.status==='fulfilled')return {segmenter:segmentation.value,pose:pose.value};
+    const classifierPromise=fetchModelPart(classifierUrl).then(bytes=>ort.InferenceSession.create(bytes,{executionProviders:['wasm'],graphOptimizationLevel:'all'}));
+    const loaded=await Promise.allSettled([createPetSegmenter(segmentUrl,wasmBase),posePromise,classifierPromise] as const);
+    const segmentation=loaded[0],pose=loaded[1],classifier=loaded[2];
+    if(segmentation.status==='fulfilled'&&pose.status==='fulfilled'&&classifier.status==='fulfilled')return {segmenter:segmentation.value,pose:pose.value,classifier:classifier.value};
     if(segmentation.status==='fulfilled')await segmentation.value.dispose();
     if(pose.status==='fulfilled')await pose.value.release();
-    throw segmentation.status==='rejected'?segmentation.reason:pose.status==='rejected'?pose.reason:new Error('Scan model loading failed.');
+    if(classifier.status==='fulfilled')await classifier.value.release();
+    throw segmentation.status==='rejected'?segmentation.reason:pose.status==='rejected'?pose.reason:classifier.status==='rejected'?classifier.reason:new Error('Scan model loading failed.');
   })().catch(error=>{modelCache.delete(key);throw error;});
   modelCache.set(key,promise);
   return promise;
@@ -191,21 +197,25 @@ async function scanCanvas(canvas:HTMLCanvasElement,models:Models,progress:(text:
   const totalSpecies=segmentation.dogPixels+segmentation.catPixels;
   if(totalSpecies&&Math.min(segmentation.dogPixels,segmentation.catPixels)/totalSpecies>.1)
     warnings.push('The model gives mixed dog and cat labels in this frame.');
-  progress(`${label}: locating body landmarks and the size reference…`);
+  progress(`${label}: locating body landmarks…`);
   await yieldFrame(signal);
   const markers=new AR.Detector().detect(imageData).filter(marker=>marker.id===137);
   checkAbort(signal);
   let keypoints:ScanFrame['keypoints']=[];
+  let appearance:AppearancePrediction|undefined;
   const enoughPet=components.petPixels>=Math.max(48,canvas.width*canvas.height*.003);
   if(components.bounds&&enoughPet) {
     const bounds=components.bounds;
     const pose=await inferAnimalPose({ort,session:models.pose,imageData,bbox:[bounds.left,bounds.top,bounds.right,bounds.bottom]});
     checkAbort(signal);keypoints=pose.keypoints;
+    progress(`${label}: estimating a typical size from your pet’s appearance…`);
+    appearance=await inferPetAppearance({ort,session:models.classifier,imageData,labels:classifierLabels});
+    checkAbort(signal);
   } else warnings.push('A clear pet outline could not be detected in this frame.');
   const frame:ScannedFrame={width:canvas.width,height:canvas.height,mask:components.mask,keypoints,markers,
     touchesImageEdge:components.touchesImageEdge,previewUrl:canvas.toDataURL('image/jpeg',.88),overlayUrl:'',
     timeSeconds,petPixels:components.petPixels,dogPixels:segmentation.dogPixels,catPixels:segmentation.catPixels,
-    componentCount:components.componentCount,meaningfulComponents:components.meaningfulComponents,warnings};
+    componentCount:components.componentCount,meaningfulComponents:components.meaningfulComponents,warnings,appearance};
   let view=analyzeView(frame);
   if(!enoughPet||components.meaningfulComponents>1) {
     view={view:'unknown',reason:!enoughPet?'A clear pet outline could not be detected.':
@@ -224,14 +234,18 @@ export async function scanPetMedia(options:ScanMediaOptions):Promise<ScanMediaRe
   const progress=(text:string)=>{checkAbort(signal);onProgress(text);};
   const job=scanQueue.catch(()=>{}).then(async()=>{
     checkAbort(signal);
-    progress('Loading the on-device scan models…');
-    const models=await waitAbortable(loadModels(asset),signal);
-    checkAbort(signal);
+    const getModels=async()=>{
+      progress('Loading the on-device scanner…');
+      try{return await waitAbortable(loadModels(asset),signal);}
+      catch(error){if(isAbort(error))throw error;throw Object.assign(new Error('The scanner could not load. Try again or enter measurements below.'),{kind:'model-error'});}
+    };
+    const decodeFailure=(error:unknown):never=>{if(isAbort(error))throw error;throw Object.assign(new Error(kind==='image'?'This photo could not be opened. Try another photo, or enter measurements below.':'This video could not be opened. Try an MP4 or photo, or enter measurements below.'),{kind:'media-error'});};
     const frames:ScannedFrame[]=[],viewResults:ViewAnalysis[]=[];
     if(kind==='image') {
       progress('Opening your photo…');
-      const canvas=await decodePhoto(url,signal);
+      const canvas=await decodePhoto(url,signal).catch(decodeFailure);
       try {
+        const models=await getModels();
         const scanned=await scanCanvas(canvas,models,progress,'Photo',signal);
         frames.push(scanned.frame);viewResults.push(scanned.view);
       } finally {canvas.width=canvas.height=1;}
@@ -240,31 +254,34 @@ export async function scanPetMedia(options:ScanMediaOptions):Promise<ScanMediaRe
       video.preload='auto';video.muted=true;video.playsInline=true;
       try {
         progress('Opening your video and selecting frames…');
-        await videoEvent(video,'loadedmetadata',()=>{video.src=url;video.load();},signal,20000);
+        await videoEvent(video,'loadedmetadata',()=>{video.src=url;video.load();},signal,20000).catch(decodeFailure);
         const duration=video.duration;
         if(!Number.isFinite(duration)||duration<=0||!video.videoWidth||!video.videoHeight)
-          throw new Error('The video duration could not be read. Try a shorter MP4 video or clear photos.');
+          decodeFailure(new Error('Invalid video duration.'));
         const times=Array.from(new Set([.05,.275,.5,.725,.95].map(ratio=>Math.round(duration*ratio*1000)/1000)))
           .map(time=>Math.min(Math.max(0,duration-.001),time));
         const frameErrors:string[]=[];
+        let models:Models|undefined;
         for(let i=0;i<times.length;i++) {
           checkAbort(signal);
           let canvas:HTMLCanvasElement;
           try {canvas=await seekVideo(video,times[i],signal);}
           catch(error) {if(isAbort(error))throw error;frameErrors.push(error instanceof Error?error.message:'A video frame could not be decoded.');continue;}
           try {
+            models??=await getModels();
             const scanned=await scanCanvas(canvas,models,progress,`Frame ${i+1} of ${times.length}`,signal,times[i]);
             frames.push(scanned.frame);viewResults.push(scanned.view);
           } finally {canvas.width=canvas.height=1;}
         }
-        if(!frames.length)throw new Error(frameErrors[0]||'No usable video frame could be opened. Try clear photos instead.');
+        if(!frames.length)decodeFailure(new Error(frameErrors[0]||'No usable video frame.'));
         if(frameErrors.length)frames[0].warnings.push(`${frameErrors.length} video frames could not be decoded; only the displayed frames were analyzed.`);
       } finally {video.pause();video.removeAttribute('src');video.load();}
     }
     checkAbort(signal);
-    progress('Checking whether the views support physical measurements…');
+    progress('Preparing your pet’s editable estimates…');
     await yieldFrame(signal);
-    const result=combineViews(viewResults);
+    const calibrated=combineViews(viewResults);
+    const result=calibrated.status==='ready'?calibrated:estimatePetFrames(frames);
     checkAbort(signal);
     return {frames,viewResults,result,frameCount:frames.length};
   });

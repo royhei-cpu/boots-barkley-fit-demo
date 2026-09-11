@@ -14,5 +14,9 @@
   "public/scan-runtime/ort-wasm-simd-threaded.wasm": {
     "bytes": 11210254,
     "sha256": "71aef04959c5c1b6de461b6538e2058e306610034a85aad2742d0c7fd4533fe4"
+  },
+  "public/models/mobilenetv3-large-v2-fp16.onnx": {
+    "bytes": 10992738,
+    "sha256": "57ab69fe4bc22e48ae23d70389a202500fb48c21962abed8f2de832c3b401666"
   }
 }
