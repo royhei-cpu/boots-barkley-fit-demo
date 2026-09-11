@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -25,36 +25,6 @@ jobs:
         uses: actions/checkout@v7.0.1
         with:
           ref: main
-
-      - name: Import the tested automatic pet scanner once
-        env:
-          SOURCE_ZIP_URL: https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-demo-source.zip
-          SOURCE_ZIP_SHA256: 6bee2ad9429bd218d763be5162eec70d1456fd00f5d6182ab271b2a80ea901a5
-        run: |
-          set -euo pipefail
-          curl --fail --location --retry 3 --proto '=https' --tlsv1.2 \
-            --user-agent Codex-public-access-check \
-            "$SOURCE_ZIP_URL" -o "$RUNNER_TEMP/fit-studio-source.zip"
-          printf '%s  %s\n' "$SOURCE_ZIP_SHA256" "$RUNNER_TEMP/fit-studio-source.zip" | sha256sum --check --strict
-          unzip -q "$RUNNER_TEMP/fit-studio-source.zip" -d "$RUNNER_TEMP/fit-studio-source"
-          for source_path in app components lib public scripts tests docs-research scan-assets.json package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json SOURCE-NOTES.md README.md; do
-            cp -R "$RUNNER_TEMP/fit-studio-source/$source_path" .
-          done
-          curl --fail --location --retry 3 --proto '=https' --tlsv1.2 --user-agent Codex-public-access-check 'https://barkley-fit-studio.lhei111.chatgpt.site/models/pet-lraspp-512.onnx' -o 'public/models/pet-lraspp-512.onnx'
-          printf '%s  %s\n' '860c7102e56b977f60e8804bdd9773ed26c2ed287042042263ac623a90567075' 'public/models/pet-lraspp-512.onnx' | sha256sum --check --strict
-          curl --fail --location --retry 3 --proto '=https' --tlsv1.2 --user-agent Codex-public-access-check 'https://barkley-fit-studio.lhei111.chatgpt.site/models/rtmpose-ap10k-fp16.part1' -o 'public/models/rtmpose-ap10k-fp16.part1'
-          printf '%s  %s\n' '54efa8b15d5beb6286c155b5879ad26846a68b4f2846b69075ca547d8119a261' 'public/models/rtmpose-ap10k-fp16.part1' | sha256sum --check --strict
-          curl --fail --location --retry 3 --proto '=https' --tlsv1.2 --user-agent Codex-public-access-check 'https://barkley-fit-studio.lhei111.chatgpt.site/models/rtmpose-ap10k-fp16.part2' -o 'public/models/rtmpose-ap10k-fp16.part2'
-          printf '%s  %s\n' '676dc6e7d4ba92dcfcf5bbccfe1218335bb958b23b8c4f67e74ee60f26279c32' 'public/models/rtmpose-ap10k-fp16.part2' | sha256sum --check --strict
-          curl --fail --location --retry 3 --proto '=https' --tlsv1.2 --user-agent Codex-public-access-check 'https://barkley-fit-studio.lhei111.chatgpt.site/scan-runtime/ort-wasm-simd-threaded.wasm' -o 'public/scan-runtime/ort-wasm-simd-threaded.wasm'
-          printf '%s  %s\n' '71aef04959c5c1b6de461b6538e2058e306610034a85aad2742d0c7fd4533fe4' 'public/scan-runtime/ort-wasm-simd-threaded.wasm' | sha256sum --check --strict
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add app components lib public scripts tests docs-research scan-assets.json package.json pnpm-lock.yaml pnpm-workspace.yaml tsconfig.json SOURCE-NOTES.md README.md
-          if ! git diff --cached --quiet; then
-            git commit -m 'Add on-device automatic pet scanning and calibrated measurement review'
-            git push origin HEAD:main
-          fi
 
       - name: Configure Pages
         uses: actions/configure-pages@v6.0.0
