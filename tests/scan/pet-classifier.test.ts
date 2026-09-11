@@ -15,7 +15,7 @@ test('Breed-like classes use distinct adult priors and cats stay separate',()=>{
 test('Ambiguous sizes remain a labeled rough blend, including nonadjacent groups',()=>{
   const x=classifyPetLogits(logits([[259,10],[260,10]]));
   assert.equal(x.accepted,true);assert.equal(x.uncertainSize,true);assert.equal(x.uncertainty,'high');
-  assert.ok(Math.abs(x.groupWeights.toy-.5)<.000001);assert.ok(Math.abs(x.groupWeights.large-.5)<.000001);
+  assert.ok(Math.abs((x.groupWeights.toy??NaN)-.5)<.000001);assert.ok(Math.abs((x.groupWeights.large??NaN)-.5)<.000001);
 });
 test('Variable-size unsupported breed classes never get a default medium',()=>assert.equal(classifyPetLogits(logits([[268,10]])).accepted,false));
 test('RGBA preprocessing produces finite RGB normalized planar data',()=>{
