@@ -29,7 +29,7 @@ jobs:
       - name: Import the tested automatic pet scanner once
         env:
           SOURCE_ZIP_URL: https://barkley-fit-studio.lhei111.chatgpt.site/downloads/boots-barkley-fit-demo-source.zip
-          SOURCE_ZIP_SHA256: f2360addd94311b07eadd99d3dfc01d41fe32fb7a3cee45fa8b5c340dec0f21b
+          SOURCE_ZIP_SHA256: 6bee2ad9429bd218d763be5162eec70d1456fd00f5d6182ab271b2a80ea901a5
         run: |
           set -euo pipefail
           curl --fail --location --retry 3 --proto '=https' --tlsv1.2 \
